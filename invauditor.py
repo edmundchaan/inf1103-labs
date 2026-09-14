@@ -17,6 +17,11 @@ while True:
 
     quantity = int(user_input)
     inventory = inventory + quantity
+
+    if inventory > 500:
+            print("Warning: Inventory exceeds maximum capacity of 500 units.")
+            break
+    
     print("Current inventory:", inventory)
 
 print("Inventory audit session ended.")
