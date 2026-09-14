@@ -6,6 +6,10 @@ while True:
     if user_input == "quit":
         break
 
+    if not user_input.isdigit():
+        print("Invalid input. Please enter a valid number.")
+        continue
+    
     quantity = int(user_input)
     inventory = inventory + quantity
     print("Current inventory:", inventory)
