@@ -45,6 +45,8 @@ while True:
     delivery_processed += 1
     tax = calculate_tax(result)
 
+    print("Delivery accepted: ", result, "| Tax: ", tax, "| Current inventory: ", inventory)
+
 
 generate_report(inventory, failed_attempts)
 print("Inventory audit session ended.")
