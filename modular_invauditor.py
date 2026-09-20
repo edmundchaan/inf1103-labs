@@ -19,6 +19,11 @@ def process_delivery(current_total, new_value):
 
 def calculate_tax(amount):
      return amount * 0.1
+
+def generate_report(total_units, failed_attempts):
+        print("Total delivieries processed: ", total_units)
+        print("Number of failed/rejected entries:", failed_attempts)
+
      
 
 
@@ -32,8 +37,14 @@ while True:
     if result == "quit":
         break
 
-    if result is not None:
-        failed_attempts == 1
+    if result is None:
+        failed_attempts += 1
         continue
 
+    inventory = process_delivery(inventory, result)
+    delivery_processed += 1
+    tax = calculate_tax(result)
+
+
+generate_report(inventory, failed_attempts)
 print("Inventory audit session ended.")
