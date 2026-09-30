@@ -54,6 +54,7 @@ while True:
 
     result = get_valid_input()
     if result == "quit":
+        save_inventory(inventory, history)
         break
 
     if result is None:
@@ -61,11 +62,12 @@ while True:
         continue
 
     inventory = process_delivery(inventory, result)
+    history.append(result)
     delivery_processed += 1
     tax = calculate_tax(result)
 
     print("Delivery accepted: ", result, "| Tax: ", tax, "| Current inventory: ", inventory)
 
 
-generate_report(inventory, failed_attempts)
+generate_report(delivery_processed, failed_attempts)
 print("Inventory audit session ended.")
