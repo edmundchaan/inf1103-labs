@@ -37,10 +37,16 @@ def load_inventory():
         history.append(int(line))
 
     return total, history
-    
+
+def save_inventory(total, history):
+    with open("inventory.txt", "w") as file:
+        file.write(str(total) + "\n")
+        for amount in history:
+            file.write(str(amount) + "\n")
+    print("Inventory saved to inventory.txt")   
 
 
-inventory = 0
+inventory, history = load_inventory()
 failed_attempts = 0
 delivery_processed = 0
 
