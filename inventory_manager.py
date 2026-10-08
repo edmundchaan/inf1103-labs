@@ -35,11 +35,25 @@ def update_stock(inventory, product_id, new_stock):
     product["stock"] = new_stock
     return True
 
-inventory = [
-    {"id": "P001", "name": "Laptop", "price": 1200.0, "stock": 15},
-    {"id": "P002", "name": "Mouse", "price": 25.5, "stock": 40},
-    {"id": "P003", "name": "Keyboard", "price": 45.0, "stock": 25},
-]
-print(update_stock(inventory, "P002", 50))
-print(update_stock(inventory, "P999", 5))
+def load_inventory():
+    if os.path.exists(FILENAME):
+        print("inventory.json found.")
+        with open(FILENAME, "r") as file:
+            text = file.read()
+        if text.strip() == "":
+            return []
+        inventory = json.loads(text)
+        print("Inventory loaded successfully.")
+        return inventory
+
+    print("inventory.json not found. Starting with an empty inventory.")
+    return []
+
+
+def save_inventory(inventory):
+    with open(FILENAME, "w") as file:
+        json.dump(inventory, file, indent=4)
+    print("Inventory saved successfully to inventory.json.")
+    
+inventory = load_inventory()
 display_all(inventory)
