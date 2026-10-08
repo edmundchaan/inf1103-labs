@@ -94,6 +94,17 @@ while True:
     if option == "1":
         display_all(inventory)
 
+    elif option == "2":
+        print("Add New Product")
+        product_id = input("Product ID: ")
+        name = input("Product Name: ")
+        price = get_valid_price("Price: ")
+        stock = get_valid_stock("Stock Quantity: ")
+        if add_product(inventory, product_id, name, price, stock):
+            print("Product added successfully!")
+        else:
+            print("A product with that ID already exists.")
+
     elif option == "6":
         print("Saving inventory before exit...")
         save_inventory(inventory)
