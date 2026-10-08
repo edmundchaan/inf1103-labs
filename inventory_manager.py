@@ -54,6 +54,32 @@ def save_inventory(inventory):
     with open(FILENAME, "w") as file:
         json.dump(inventory, file, indent=4)
     print("Inventory saved successfully to inventory.json.")
+
+def get_valid_stock(prompt):
+    while True:
+        value = input(prompt)
+        if value.isdigit():
+            return int(value)
+        print("Invalid input. Please enter a whole number (0 or more).")
+
+
+def get_valid_price(prompt):
+    while True:
+        value = input(prompt)
+        if value.replace(".", "", 1).isdigit():
+            return float(value)
+        print("Invalid input. Please enter a valid price, e.g. 25.50.")
+
+
+def show_menu():
+    print("----------- MENU -----------")
+    print("1. Display All Products")
+    print("2. Add Product")
+    print("3. Update Stock")
+    print("4. Search Product")
+    print("5. Save Inventory")
+    print("6. Exit")
+    print("----------------------------")
     
 inventory = load_inventory()
 display_all(inventory)
