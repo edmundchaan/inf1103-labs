@@ -81,5 +81,25 @@ def show_menu():
     print("6. Exit")
     print("----------------------------")
     
+print("=" * 40)
+print("INVENTORY MANAGEMENT SYSTEM")
+print("=" * 40)
+
 inventory = load_inventory()
-display_all(inventory)
+show_menu()
+
+while True:
+    option = input("Enter option: ")
+
+    if option == "1":
+        display_all(inventory)
+
+    elif option == "6":
+        print("Saving inventory before exit...")
+        save_inventory(inventory)
+        print("Thank you for using Inventory Management System.")
+        print("Program terminated.")
+        break
+
+    else:
+        print("Invalid option. Please enter a number from 1 to 6.")
