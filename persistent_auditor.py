@@ -31,6 +31,9 @@ def load_inventory():
     except FileNotFoundError:     
         return 0, []
 
+    if not lines:
+        return 0, []
+
     total = int(lines[0])
     history = []
     for line in lines[1:]:
