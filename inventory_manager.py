@@ -105,6 +105,35 @@ while True:
         else:
             print("A product with that ID already exists.")
 
+    elif option == "3":
+        print("Update Stock")
+        product_id = input("Enter Product ID: ")
+        product = search_product(inventory, product_id)
+        if product is None:
+            print("Product not found.")
+        else:
+            print("Product Found:")
+            print("Name:", product["name"])
+            print("Current Stock:", product["stock"])
+            new_stock = get_valid_stock("New Stock Quantity: ")
+            update_stock(inventory, product_id, new_stock)
+            print("Stock updated successfully!")
+
+    elif option == "4":
+        print("Search Product")
+        product_id = input("Enter Product ID: ")
+        product = search_product(inventory, product_id)
+        if product is None:
+            print("Product not found.")
+        else:
+            print("Product Found")
+            print("-" * 48)
+            print("ID:", product["id"])
+            print("Name:", product["name"])
+            print(f"Price: ${product['price']:.2f}")
+            print("Stock:", product["stock"])
+            print("-" * 48)
+
     elif option == "6":
         print("Saving inventory before exit...")
         save_inventory(inventory)
